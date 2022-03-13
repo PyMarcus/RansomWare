@@ -16,7 +16,7 @@ defina no script o tipo de arquivos a criptografar.Se quiser todos do pc, ele de
 <br>
 Para criptografar: <br>
 Por fim, execute: python Ransomware.py encrypt
-<br>
+<br><br>
 Para descriptografar:<br>
 python Ransomware.py decrypt
 
