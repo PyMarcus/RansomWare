@@ -1,6 +1,8 @@
 # RansomWare
 A simple ransomware for curiosity
 <br>
+https://pt.wikipedia.org/wiki/Ransomware
+<br>
 <br>
 ### English<br>
 PS: This ransomware was made out of curiosity and to pass the time. Furthermore, I am against any kind of crime and injustice, whether in the virtual world or not.
