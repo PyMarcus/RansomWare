@@ -23,3 +23,4 @@ python Ransomware.py encrypt
 <br>
 <br>
 versão do python: 3.10, mais recente
+ 
