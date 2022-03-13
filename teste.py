@@ -1,6 +1,7 @@
-import struct
-import urllib.request
-import sys
+from cryptography.fernet import Fernet
 
-x: int = struct.calcsize('P') * 8
-print(x)
+
+k = Fernet.generate_key()
+g = Fernet(k)
+with open("C:\\Users\\Marcu\\Documents\\Faculdade\\2022\\teste1.txt", "wb")
+g.encrypt()
