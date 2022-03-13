@@ -18,7 +18,7 @@ Para criptografar: <br>
 Por fim, execute: python Ransomware.py encrypt
 <br>
 Para descriptografar:<br>
-python Ransomware.py encrypt
+python Ransomware.py decrypt
 
 <br>
 <br>
