@@ -13,7 +13,7 @@ Este ransomware foi feito por curiosidade e para passar o tempo.Ademais, sou con
 
 ## How to use:<br>
 defina no script o tipo de arquivos a criptografar.Se quiser todos do pc, ele deverá apontar para o root do sistema, C:
-<br>
+<br><br>
 Para criptografar: <br>
 Por fim, execute: python Ransomware.py encrypt
 <br><br>
